@@ -74,10 +74,3 @@ if st.button("Predict Risk"):
     else:
         st.warning(f"The predicted credit risk is: **{prediction_label[0].upper()}**")
 
-st.markdown("""
-## How to run this app:
-1. Save the code above as `app.py` in your Colab environment.
-2. In a new cell, run `!pip install streamlit`.
-3. In another new cell, run `!streamlit run app.py & npx localtunnel --port 8501`.
-4. Click on the public URL provided by localtunnel to view your app.
-""")
