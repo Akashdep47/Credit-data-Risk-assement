@@ -19,9 +19,13 @@ import joblib
 @st.cache_resource
 def load_feature_encoders():
     feature_encoders = {}
-    for col in ['Sex', 'Housing', 'Saving_accounts', 'Checking_account']:
-        feature_encoders[col] = joblib.load(f"label_encoder_{col}.joblib")
-    return feature_encoderss
+
+    feature_encoders["Sex"] = joblib.load("label_encoder_Sex.joblib")
+    feature_encoders["Housing"] = joblib.load("label_encoder_Housing.joblib")
+    feature_encoders["Saving accounts"] = joblib.load("label_encoder_Saving_accounts.joblib")
+    feature_encoders["Checking account"] = joblib.load("label_encoder_checking_account.joblib")
+
+    return feature_encoders
 
 model = load_model()
 target_encoder = load_target_encoder()
