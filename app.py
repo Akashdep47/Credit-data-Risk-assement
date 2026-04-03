@@ -13,21 +13,15 @@ def load_target_encoder():
     return joblib.load("target_encoder.joblib")
 
 # Load feature label encoders
-@@st.cache_resource
+import streamlit as st
+import joblib
+
+@st.cache_resource
 def load_feature_encoders():
     feature_encoders = {}
-
-    file_mapping = {
-        'Sex': 'label_encoder_Sex.joblib',
-        'Housing': 'label_encoder_Housing.joblib',
-        'Saving accounts': 'label_encoder_saving_accounts.joblib',
-        'Checking account': 'label_encoder_checking_account.joblib'
-    }
-
-    for col, file_name in file_mapping.items():
-        feature_encoders[col] = joblib.load(file_name)
-
-    return feature_encoders
+    for col in ['Sex', 'Housing', 'Saving_accounts', 'Checking_account']:
+        feature_encoders[col] = joblib.load(f"label_encoder_{col}.joblib")
+    return feature_encoderss
 
 model = load_model()
 target_encoder = load_target_encoder()
